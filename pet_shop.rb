@@ -76,9 +76,13 @@ def customer_can_afford_pet(customer, new_pet)
 end
 
 def sell_pet_to_customer(pet_shop, pet, customer)
+    
+    return "Pet not found." if (pet == nil)
+
     customer[:pets].push(pet)
     customer[:cash] -= pet[:price]
     pet_shop[:pets].delete(pet)
     pet_shop[:admin][:total_cash] += pet[:price]
     pet_shop[:admin][:pets_sold] += 1
+    
 end
