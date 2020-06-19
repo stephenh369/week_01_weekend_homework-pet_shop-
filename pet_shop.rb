@@ -78,6 +78,7 @@ end
 def sell_pet_to_customer(pet_shop, pet, customer)
     
     return "Pet not found." if (pet == nil)
+    return "insufficient funds." if (customer[:cash] < pet[:price])
 
     customer[:pets].push(pet)
     customer[:cash] -= pet[:price]
